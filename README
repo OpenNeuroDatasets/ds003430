@@ -1,14 +1,20 @@
-# Visual image reconstruction from human brain activity during selective attention unveils subjective visual images
+# Attentionally modulated subjective images reconstructed from brain activity
 
 ## Original paper
 
-Horikawa, T., Kamitani, Y., Visual image reconstruction from human brain activity during select
-ive attention unveils subjective visual images, (2020)
+Horikawa, T., Kamitani, Y., Attentionally modulated subjective images reconstructed from brain activity, (2020)
 ## Dataset
 
 ### MRI data
 
-This dataset contains fMRI data from five subjects ('sub-01', 'sub-02', 'sub-03', 'sub-04', and 'sub-05'). The subjects performed eight sessions of fMRI experiments ('ses-01', 'ses-02', ..., 'ses-08').
+This dataset contains fMRI data from five subjects ('sub-01', 'sub-02', 'sub-03', 'sub-04', and 'sub-05'). The subjects performed fMRI experiments for single-image presentation ('ses-perceptionNaturalImageTraining01', ...) and attention task ('ses-attention01' and 'ses-attention02'). 
+In this study, two types of MRI data were collected over multiple scanning sessions.
+
+- 'ses-perceptionNaturalImageTraining': fMRI data from the single-image presentation experiment (120 runs; 15-16 sessions)
+- 'ses-attention': fMRI data from the attention experiment (16 runs; 2 sessions)
+
+The 'ses-perceptionNaturalImageTraining' data for sub-01, sub-02, and sub-03 are available from the [Deep Image Reconstruction](https://openneuro.org/datasets/ds001506/versions/1.3.1) dataset.
+
 Each scanning session consisted of functional (EPI) and anatomical (inplane T2) images.
 The functional EPI images covered the entire brain (TR, 2000 ms; TE, 43 ms; flip angle, 80°; voxel size, 2 × 2 × 2 mm; FOV, 192 × 192 mm; number of slices, 76; slice gap, 0 mm; multiband factor, 4) and inplane T2-weighted anatomical images were acquired with the same slices used for the EPI (TR, 11,000 ms; TE, 59 ms; flip angle, 160°; voxel size, 0.75 × 0.75 × 2.0 mm; FOV, 192 × 192 mm).
 The dataset also includes a T1-weighted anatomical reference image for each subject (TR, 2250 ms; TE, 3.06 ms; TI, 900 ms; flip angle, 9°; voxel size, 1.0 × 1.0 × 1.0 mm; FOV, 256 × 256 mm).
@@ -19,20 +25,37 @@ All DICOM files are converted to Nifti-1 files by mri_convert in FreeSurfer.
 
 ### Task event files
 
-Task event files ('sub-\*_ses-\*_task-CowenKeltnerEmotionMovie_run-\*_events.tsv') contains recorded event during fMRI runs. Each column of the task event files represents:
+Task event files ('sub-\*_ses-\*_task-\*_run-\*_events.tsv') contains recorded event during fMRI runs.
+In task event files for image presentation experiments ('task-perception'), each column represents:
 
 - 'onset': onset time of an event (sec)
 - 'duration': duration of the event (sec)
-- 'trial_type': type of the event (1: Stimulus presentation block, -1 and -2: Initial and post rest blocks without visual stimulus)
-- 'stimulus_name': stimulus file name of the video presented in a stimulus block ('n/a' in rest blocks)
-- 'stimulus_index': stimulus ID of the video presented in a stimulus block ('n/a' in rest blocks)
+- 'trial_type': type of the event (1: Stimulus presentation block, 2: Repetition block, -1, -2, and -3: Initial, inter-trial, and post rest blocks without visual stimulus)
+- 'stimulus_name': stimulus file name of the image presented in a stimulus block ('n/a' in rest blocks)
+- 'response_time': time of button press in the block, elapsed time from the beginning of each run [sec] ('0.000000' when the subject did not press the button in the block)
+- Additional columns 'category_index' and 'image_index' are for internal use.
+
+In task event files for imagery experiments ('task-attention'), each column in represents:
+
+- 'onset': onset time of an event (sec)
+- 'duration': duration of the event (sec)
+- 'trial_type': type of the event (1: Stimulus presentation block, 2: Repetition block, -1, -2, and -3: Initial, inter-trial, and post rest blocks without visual stimulus)
+- attended_stimulus_name
+- attended_category_index
+- attended_image_index
+- unattended_stimulus_name
+- unattended_category_index
+- unattended_image_index
+- unique_image_index
+- 'response_time': time of button press in the block, elapsed time from the beginning of each run [sec] ('0.000000' when the subject did not press the button in the block)
+- Additional columns 'category_index' and 'image_index' are for internal use.
 
 
-### Stimulus 
-
+### Stimulus images
+Due to license issues, our dataset do not include the stimulus images used in the natural image presentation experiments. A script downloading the stimulus images from ImageNet are available at https://github.com/KamitaniLab/GenericObjectDecoding.
 
 ## Contact
 
-- Email: <brainliner-admin@atr.jp>
+- Email: <kamitanilab@gmail.com>
 - We also accept inqueries at [issues on GitHub/KamitaniLab/OpenData](https://github.com/KamitaniLab/OpenData/issues).
 
