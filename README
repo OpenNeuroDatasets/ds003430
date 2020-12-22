@@ -24,7 +24,7 @@ All DICOM files are converted to Nifti-1 files by mri_convert in FreeSurfer.
 ### Task event files
 
 Task event files ('sub-\*_ses-\*_task-\*_run-\*_events.tsv') contains recorded event during fMRI runs.
-In task event files for image presentation experiments ('task-perception'), each column represents:
+In task event files for single-image presentation experiments ('task-perception'), each column represents:
 
 - 'onset': onset time of an event (sec)
 - 'duration': duration of the event (sec)
@@ -33,7 +33,7 @@ In task event files for image presentation experiments ('task-perception'), each
 - 'response_time': time of button press in the block, elapsed time from the beginning of each run [sec] ('0.000000' when the subject did not press the button in the block)
 - Additional columns 'category_index' and 'image_index' are for internal use.
 
-In task event files for imagery experiments ('task-attention'), each column in represents:
+In task event files for attention experiments ('task-attention'), each column represents:
 
 - 'onset': onset time of an event (sec)
 - 'duration': duration of the event (sec)
