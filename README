@@ -37,11 +37,11 @@ In task event files for attention experiments ('task-attention'), each column re
 
 - 'onset': onset time of an event (sec)
 - 'duration': duration of the event (sec)
-- 'trial_type': type of the event (1:, 2:, -1: Initial rest block, -2: Post rest block, and -3: Cue block)
+- 'trial_type': type of the event (1: Stimulus block with attention to first cue image, 2: Stimulus block with attention to second cue image, -1: Initial rest block, -2: End rest block, and -3: Cue block)
 - 'attended_stimulus_name': stimulus file name of the attended image ('n/a' in rest blocks)
 - 'unattended_stimulus_name': stimulus file name of the unattended image ('n/a' in rest blocks)
 - 'response_time': time of button press in the block, elapsed time from the beginning of each run (sec, '0.000000' when the subject did not press the button in the block)
-- Additional columns 'attended_category_index', 'attended_image_index', 'unattended_category_index', 'unattended_image_index', and 'unique_image_index' are for internal use.
+- Additional columns 'attended_category_index', 'attended_image_index', 'unattended_category_index', 'unattended_image_index', and 'unique_image_index' are for internal use. Trials with the same attended_image_index and unattended_image_index correspond single-image trials.
 
 
 ### Stimulus images
