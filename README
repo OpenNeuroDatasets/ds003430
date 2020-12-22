@@ -7,8 +7,7 @@ Horikawa, T., Kamitani, Y., Attentionally modulated subjective images reconstruc
 
 ### MRI data
 
-This dataset contains fMRI data from five subjects ('sub-01', 'sub-02', 'sub-03', 'sub-04', and 'sub-05'). The subjects performed fMRI experiments for single-image presentation ('ses-perceptionNaturalImageTraining01', ...) and attention task ('ses-attention01' and 'ses-attention02'). 
-In this study, two types of MRI data were collected over multiple scanning sessions.
+This dataset contains fMRI data from five subjects ('sub-01', 'sub-02', 'sub-03', 'sub-04', and 'sub-05'). The subjects performed two types of fMRI experiments: single-image presentation experiment and attention experiment.
 
 - 'ses-perceptionNaturalImageTraining': fMRI data from the single-image presentation experiment (120 runs; 15-16 sessions)
 - 'ses-attention': fMRI data from the attention experiment (16 runs; 2 sessions)
@@ -40,15 +39,10 @@ In task event files for imagery experiments ('task-attention'), each column in r
 - 'onset': onset time of an event (sec)
 - 'duration': duration of the event (sec)
 - 'trial_type': type of the event (1: Stimulus presentation block, 2: Repetition block, -1, -2, and -3: Initial, inter-trial, and post rest blocks without visual stimulus)
-- attended_stimulus_name
-- attended_category_index
-- attended_image_index
-- unattended_stimulus_name
-- unattended_category_index
-- unattended_image_index
-- unique_image_index
+- 'attended_stimulus_name': stimulus file name of the attended image ('n/a' in rest blocks)
+- 'unattended_stimulus_name': stimulus file name of the unattended image ('n/a' in rest blocks)
 - 'response_time': time of button press in the block, elapsed time from the beginning of each run [sec] ('0.000000' when the subject did not press the button in the block)
-- Additional columns 'category_index' and 'image_index' are for internal use.
+- Additional columns 'attended_category_index', 'attended_image_index', 'unattended_category_index', 'unattended_image_index', and 'unique_image_index' are for internal use.
 
 
 ### Stimulus images
