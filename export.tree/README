@@ -1,0 +1,56 @@
+# Attentionally modulated subjective images reconstructed from brain activity
+
+## Original paper
+
+Horikawa, T., Kamitani, Y., Attentionally modulated subjective images reconstructed from brain activity, (2020)
+https://www.biorxiv.org/content/10.1101/2020.12.27.424510v1
+
+## Dataset
+
+### MRI data
+
+This dataset contains fMRI data from seven subjects ('sub-01', 'sub-02', 'sub-03', 'sub-04', 'sub-05', 'sub-06', and 'sub-07'). The subjects performed two types of fMRI experiments: single-image presentation experiment and attention experiment.
+
+- 'ses-perceptionNaturalImageTraining': fMRI data from the single-image presentation experiment (120 runs; 15-16 sessions)
+- 'ses-attention': fMRI data from the attention experiment (16 runs; 2 sessions)
+
+The 'ses-perceptionNaturalImageTraining' data for sub-01, sub-02, and sub-03 are available from the [Deep Image Reconstruction](https://openneuro.org/datasets/ds001506/versions/1.3.1) dataset.
+
+Each scanning session consisted of functional EPI images covered the entire brain (TR, 2000 ms; TE, 43 ms; flip angle, 80°; voxel size, 2 × 2 × 2 mm; FOV, 192 × 192 mm; number of slices, 76; slice gap, 0 mm; multiband factor, 4) .
+The dataset also includes a T1-weighted anatomical reference image for each subject (TR, 2250 ms; TE, 3.06 ms; TI, 900 ms; flip angle, 9°; voxel size, 1.0 × 1.0 × 1.0 mm; FOV, 256 × 256 mm).
+The T1-weighted images were scanned only once for each subject in a separate scanning session and are stored in 'ses-anatomy' directories.
+The T1-weighted images were defaced by pydeface (<https://pypi.python.org/pypi/pydeface>).
+All DICOM files are converted to Nifti-1 files by mri_convert in FreeSurfer.
+
+
+### Task event files
+
+Task event files ('sub-\*_ses-\*_task-\*_run-\*_events.tsv') contains recorded event during fMRI runs.
+In task event files for single-image presentation experiments ('task-perception'), each column represents:
+
+- 'onset': onset time of an event (sec)
+- 'duration': duration of the event (sec)
+- 'trial_type': type of the event (1: Stimulus presentation block, 2: Repetition block, -1 and -2: Initial and post rest blocks without visual stimulus)
+- 'stimulus_name': stimulus file name of the image presented in a stimulus block ('n/a' in rest blocks)
+- 'response_time': time of button press in the block, elapsed time from the beginning of each run (sec, '0.000000' when the subject did not press the button in the block)
+- Additional columns 'category_index' and 'image_index' are for internal use.
+
+In task event files for attention experiments ('task-attention'), each column represents:
+
+- 'onset': onset time of an event (sec)
+- 'duration': duration of the event (sec)
+- 'trial_type': type of the event (1: Stimulus block with attention to first cue image, 2: Stimulus block with attention to second cue image, -1: Initial rest block, -2: End rest block, and -3: Cue block)
+- 'attended_stimulus_name': stimulus file name of the attended image ('n/a' in rest blocks)
+- 'unattended_stimulus_name': stimulus file name of the unattended image ('n/a' in rest blocks)
+- 'response_time': time of button press in the block, elapsed time from the beginning of each run (sec, '0.000000' when the subject did not press the button in the block)
+- Additional columns 'attended_category_index', 'attended_image_index', 'unattended_category_index', 'unattended_image_index', and 'unique_image_index' are for internal use. Trials with the same attended_image_index and unattended_image_index correspond single-image trials.
+
+
+### Stimulus images
+Due to license issues, our dataset do not include the stimulus images used in the natural image presentation experiments. A script downloading the stimulus images from ImageNet are available at https://github.com/KamitaniLab/GenericObjectDecoding.
+
+## Contact
+
+- Email: <kamitanilab@gmail.com>
+- We also accept inqueries at [issues on GitHub/KamitaniLab/OpenData](https://github.com/KamitaniLab/OpenData/issues).
+
